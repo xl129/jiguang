@@ -23,6 +23,7 @@ type Response struct {
 type HttpRequest struct {
 	connectTimeout   time.Duration
 	readWriteTimeout time.Duration
+	config *Config
 }
 
 // GET请求
@@ -115,7 +116,7 @@ func (h *HttpRequest) request(uri, method string, body io.Reader, headers map[st
 	req.Header.Add("Charset", "utf-8")
 	req.Header.Add("Connection", "Keep-Alive")
 	//添加认证
-	req.Header.Add("Authorization", getAuthorization())
+	req.Header.Add("Authorization", h.config.getAuthorization())
 	//处理返回结果
 	response, err := client.Do(req)
 	defer response.Body.Close()
@@ -150,13 +151,14 @@ func TimeoutDialer(cTimeout time.Duration, rwTimeout time.Duration) func(net, ad
 
 var httpRequestInstance *HttpRequest
 
-func GetHttpRequestInstance() *HttpRequest {
+func GetHttpRequestInstance(config *Config) *HttpRequest {
 	if httpRequestInstance != nil {
 		return httpRequestInstance
 	}
 	httpRequestInstance = &HttpRequest{
 		connectTimeout:   60 * time.Second,
 		readWriteTimeout: 60 * time.Second,
+		config:config,
 	}
 
 	return httpRequestInstance

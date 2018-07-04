@@ -32,8 +32,10 @@ type UserInfoResult struct {
 	Error           `json:"error"`
 }
 
-func NewUser() *User {
-	return &User{}
+func NewUser(config *Config) *User {
+	return &User{
+		IM{config: config},
+	}
 }
 
 // 用户注册   这里为啥不传UserInfo 是因为那边有些参数存在无值会报错

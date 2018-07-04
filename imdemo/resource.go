@@ -6,7 +6,7 @@ import (
 )
 
 func ResourceUpload() {
-	var u = im.NewResource()
+	var u = im.NewResource(getConfig())
 	err, data := u.Upload("image", "/home/lin/图片/cret.png")
 	fmt.Println(err)
 	fmt.Println(data)

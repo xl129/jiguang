@@ -29,8 +29,10 @@ type Resource struct {
 	IM
 }
 
-func NewResource() *Resource {
-	return &Resource{}
+func NewResource(config *Config) *Resource {
+	return &Resource{
+		IM{config: config},
+	}
 }
 
 func init() {
