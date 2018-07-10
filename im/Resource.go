@@ -25,6 +25,25 @@ type ResourceResponse struct {
 	Error             `json:"error"`
 }
 
+// 图片资源
+type ImageResource struct {
+	MediaId    string `json:"media_id"`
+	MediaCrc32 int64  `json:"media_crc32"`
+	Width      int    `json:"width"`
+	Height     int    `json:"height"`
+	Format     string `json:"format"`
+	FSize      int    `json:"fsize"`
+}
+
+// 语音资源
+type VoiceResource struct {
+	MediaId    string `json:"media_id"`
+	MediaCrc32 int64  `json:"media_crc32"`
+	Duration   int    `json:"duration"`
+	FSize      int    `json:"fsize"`
+	Hash       string `json:"string"`
+}
+
 type Resource struct {
 	IM
 }

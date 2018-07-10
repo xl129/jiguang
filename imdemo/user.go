@@ -12,7 +12,7 @@ func UserRegister() {
 		"appkey":   appKey, //用户所在的appkey  估计android ios不能使同一个应用
 		"password": "Test",    //极光会md5一次
 		"gender":   0,
-		"Birthday": "2018-06-01",
+		"birthday": "2018-06-01",
 	}
 
 	UserList[0] = item
