@@ -74,7 +74,7 @@ func (i *Messages) SetFromType(fromType string) {
 
 // 发消息类型
 func (i *Messages) SetMsgType(msgType string) error {
-	t := [3]string{"text", "image", "custom"}
+	t := [4]string{"text", "image", "custom", "voice"}
 	check := false
 	for _, v := range t {
 		if v == msgType {
